@@ -128,7 +128,6 @@ export default {
       const Response = await this.$axios(axiosConfig)
         .then(R => R.data)
         .catch(this.AxiosCatch)
-
       return Response
     }
   },
@@ -152,7 +151,8 @@ export default {
     },
 
     async save () {
-      console.log(this.id)
+      // var token = JSON.parse(JSON.stringify(localStorage.getItem('ACCESS_TOKEN')))
+      // console.log(`${token}`)
       this.$v.Form.telefone.$touch()
       this.$v.Form.nome.$touch()
       if (this.id === 0) {
@@ -160,6 +160,7 @@ export default {
           method: 'post',
           url: '/contatos/',
           data: JSON.parse(JSON.stringify(this.Form))
+          // headers: { Authorization: 'Bearer ' + token }
         }
         await this.$axios(axiosConfig).catch(console.error())
       } else {

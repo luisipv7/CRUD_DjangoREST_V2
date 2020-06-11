@@ -15,7 +15,22 @@
           Agenda QuasarDjango
         </q-toolbar-title>
 
-        <div>Quasar DjangoFrameworkREST</div>
+        <div>
+          <q-btn
+            v-if="btnChange"
+            label="Login"
+            dense
+            flat
+            @click="login(Form)"
+          />
+          <q-btn
+            v-else
+            label="LogOut"
+            dense
+            flat
+            @click="logout"
+          />
+        </div>
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -25,11 +40,31 @@
 </template>
 
 <script>
-
+import FormLogin from '../components/FormLogin'
 export default {
   name: 'MainLayout',
   data () {
     return {
+      Form: {
+        username: '',
+        password: ''
+      },
+      btnChange: 1
+    }
+  },
+  methods: {
+    login (Form) {
+      this.$q.dialog({
+        component: FormLogin,
+        parent: this,
+        Form
+      }).onOk(() => this.change(0))
+    },
+    change (val) {
+      this.btnChange = val
+    },
+    logout () {
+      localStorage.setItem('ACCESS_TOKEN', '')
     }
   }
 }
