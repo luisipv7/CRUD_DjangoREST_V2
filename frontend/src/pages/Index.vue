@@ -73,7 +73,7 @@ export default {
   },
   asyncData: {
     async tableData () {
-      console.log(this.$acl)
+      setTimeout(() => {}, 300)
       const axiosConfig = {
         method: 'get',
         url: '/contatos/',

@@ -151,8 +151,6 @@ export default {
     },
 
     async save () {
-      // var token = JSON.parse(JSON.stringify(localStorage.getItem('ACCESS_TOKEN')))
-      // console.log(`${token}`)
       this.$v.Form.telefone.$touch()
       this.$v.Form.nome.$touch()
       if (this.id === 0) {

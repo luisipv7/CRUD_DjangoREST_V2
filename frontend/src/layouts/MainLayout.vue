@@ -58,7 +58,7 @@ export default {
       this.asyncReload()
     },
     logout () {
-      localStorage.setItem('ACCESS_TOKEN', '')
+      localStorage.removeItem('ACCESS_TOKEN')
       this.$acl.change('unauthenticated')
       this.$router.push('/')
     }

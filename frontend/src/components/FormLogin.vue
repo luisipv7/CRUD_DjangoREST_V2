@@ -104,7 +104,6 @@ export default {
       }
       const Response = await this.$axios(axiosConfig).then(R => R.data).catch(console.error())
 
-      console.log(Response)
       localStorage.setItem('ACCESS_TOKEN', Response.access)
 
       this.asyncReload()
