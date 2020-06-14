@@ -6,6 +6,9 @@
         @reset="onReset"
         class="q-gutter-md"
       >
+      <div class="flex flex-center">
+        <q-icon name="contacts" class="text-primary" size="xl"/>
+      </div>
         <q-input
           outlined
           v-model="Form.username"
@@ -28,7 +31,7 @@
             class="q-ml-sm"
           />
           <q-btn
-            label="Submit"
+            label="Login"
             type="submit"
             color="primary"
           />
