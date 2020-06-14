@@ -77,7 +77,8 @@ export default {
       this.$router.push('/index')
     },
     onReset () {
-      this.Form = null
+      this.Form.username = null
+      this.Form.password = null
     }
   }
 }
