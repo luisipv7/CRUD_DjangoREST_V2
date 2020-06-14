@@ -17,14 +17,7 @@
 
         <div>
           <q-btn
-            v-if="btnChange"
-            label="Login"
-            dense
-            flat
-            @click="login(Form)"
-          />
-          <q-btn
-            v-else
+            v-if="this.$acl.check('isAuthenticated')"
             label="LogOut"
             dense
             flat
@@ -62,9 +55,12 @@ export default {
     },
     change (val) {
       this.btnChange = val
+      this.asyncReload()
     },
     logout () {
       localStorage.setItem('ACCESS_TOKEN', '')
+      this.$acl.change('unauthenticated')
+      this.$router.push('/')
     }
   }
 }
