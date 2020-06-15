@@ -76,10 +76,14 @@ export default {
         url: '/token/',
         data: JSON.parse(JSON.stringify(this.Form))
       }
-      const Response = await this.$axios(axiosConfig).then(R => R.data).catch(console.error())
+      const Response = await this.$axios(axiosConfig).then(R => R.data).catch(R => undefined)
 
-      // console.log(Response)
-
+      if (Response === undefined) {
+        return this.$q.notify({
+          message: 'Algo certo está errado',
+          color: 'negative'
+        })
+      }
       localStorage.setItem('ACCESS_TOKEN', Response.access)
       this.$acl.change('authenticated')
       this.$router.push('/index')
