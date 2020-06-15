@@ -36,6 +36,7 @@
           v-model="Form.idade"
           class="q-pb-md"
           label="Idade"
+          type="tel"
           outlined
           dense
         />
@@ -44,6 +45,7 @@
           v-model="Form.telefone"
           class="q-pb-md"
           label="Telefone"
+          type="tel"
           autofocus
           outlined
           dense

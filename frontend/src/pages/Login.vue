@@ -6,9 +6,13 @@
         @reset="onReset"
         class="q-gutter-md"
       >
-      <div class="flex flex-center">
-        <q-icon name="contacts" class="text-primary" size="xl"/>
-      </div>
+        <div class="flex flex-center">
+          <q-icon
+            name="contacts"
+            class="text-primary"
+            size="xl"
+          />
+        </div>
         <q-input
           outlined
           v-model="Form.username"
@@ -73,6 +77,8 @@ export default {
         data: JSON.parse(JSON.stringify(this.Form))
       }
       const Response = await this.$axios(axiosConfig).then(R => R.data).catch(console.error())
+
+      // console.log(Response)
 
       localStorage.setItem('ACCESS_TOKEN', Response.access)
       this.$acl.change('authenticated')

@@ -73,10 +73,14 @@ export default {
   },
   asyncData: {
     async tableData () {
-      setTimeout(() => {}, 300)
+      setTimeout(() => { }, 1600)
       const axiosConfig = {
         method: 'get',
         url: '/contatos/',
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
+          'Content-Type': 'application/json'
+        },
         params: {
           filter: {
             fields: ['id', 'nome', 'idade', 'telefone', 'endereco'],
